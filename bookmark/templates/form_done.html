@@ -1,0 +1,11 @@
+{% extends 'base/base.html' %}
+{% load static %}
+{% block content %}
+  <div class="d-flex justify-content-center m-5">
+    <h1 class="fw-bolder"> {{ form_msg }} </h1>
+  </div>
+  <div class="d-flex justify-content-center mt-3">
+    <strong>Click <a class="text-warning text-decoration-none" href="{% url 'bookmark:info' %}">here</a> to proceed to view saved bookmark</strong>
+  </div>
+  <p class="text-center"> go <a class="text-success fw-bold text-decoration-none" href="{% url 'bookmark:home' %}">home </a></p>
+{% endblock %}
