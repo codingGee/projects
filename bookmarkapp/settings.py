@@ -20,12 +20,6 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
-    # third party apps                                                                                                                                                                                                
-    'widget_tweaks',
-    'crispy_forms',
-    
-    # local 
-    'bookmark',
     # django apps 
     'django.contrib.admin',
     'django.contrib.auth',
@@ -33,6 +27,17 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.sites',
+    
+     # local 
+    'bookmark',
+    
+     # third party apps                                                                                                                                                                                                
+    'widget_tweaks',
+    'crispy_forms',
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
 ]
 
 MIDDLEWARE = [
@@ -136,12 +141,26 @@ AUTH_USER_MODEL = 'bookmark.CustomUser'
 LOGIN_REDIRECT_URL = 'bookmark:home'
 
 ''' logout redirect '''
-LOGOUT_REDIRECT_URL = 'bookmark:home'
+ACCOUNT_LOGOUT_REDIRECT_URL = 'bookmark:home'
 
 ''' signup redirect '''
 SIGNUP_REDIRECT_URL = 'bookmark:home'
 
+''' ask for password once '''
+ACCOUNT_SIGNUP_PASSWORD_ENTER_TWICE = False
+
+
+''' django custom form decoration '''
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
+
+''' custom authentication using allauth '''
+''' django-allauth config '''
+SITE_ID = 1
+AUTHENTICATION_BACKENDS = (
+'django.contrib.auth.backends.ModelBackend',
+'allauth.account.auth_backends.AuthenticationBackend',
+)
 ''' The EMAIL_BACKEND setting indicates the class to use to send emails '''
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
-CRISPY_TEMPLATE_PACK = 'bootstrap4'
+'''django-allauth is to only ask for a password once. '''

@@ -4,10 +4,10 @@
   <div class="col-12 d-flex justify-content-center">
     {% if user.is_authenticated %}
     <p class="mx-3">Hi, {{ user.email }}</p>
-    <p><a href="{% url 'logout' %}">Log Out</a></p>
+    <p><a href="{% url 'account_logout' %}">Log Out</a></p>
     {% else %}
-    <p class="text-success p-2">We've missed you! <a class="text-decoration-none" href="{% url 'login' %}">Login in</a></p>
-    <p class="text-warning p-2"><a class="text-decoration-none" href="{% url 'bookmark:signup' %}">Sign in</a></p>
+    <p class="text-success p-2">We've missed you! <a class="text-decoration-none" href="{% url 'account_login' %}">Sign in</a></p>
+    <p class="text-warning p-2"><a class="text-decoration-none" href="{% url 'account_signup' %}">Sign up</a></p>
     {% endif %} 
   </div>
   {% if user.is_authenticated %}

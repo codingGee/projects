@@ -1,4 +1,4 @@
-<!-- templates/registration/login.html -->
+<!-- templates/account/login.html -->
 {% extends 'base/base.html' %}
 {% load crispy_forms_tags %}
 {% block title %}Log In{% endblock title %}
@@ -14,7 +14,7 @@
         <div class="mb-3">
             <button class="btn btn-outline-warning fw-bold w-100" type="submit">Log In</button>
         </div>
-        <p><a href="{% url 'bookmark:password_reset' %}">Forgotten your password?</a></p>
+        <p><a href="{% url 'account_reset_password' %}">Forgotten your password?</a></p>
         </form>
     </div>
 </main>
