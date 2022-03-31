@@ -16,7 +16,7 @@ class SignupPageView(generic.CreateView):
 
 
 def home(request):
-    name = 'CodingGee'
+    name = request.user
     msg = 'Congrats on your first step to becoming a django developer'
     template_name = 'index.html'
     

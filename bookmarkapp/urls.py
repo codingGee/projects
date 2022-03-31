@@ -18,14 +18,12 @@ from django.contrib import admin
 from django.urls import path, include
 
 urlpatterns = [
-    # local app 
-    path('', include('bookmark.urls', namespace='bookmark')),
-    
     # django admin 
     path('admin/', admin.site.urls),
     
     # user management 
     path('accounts/', include('django.contrib.auth.urls')),
     
-    
+        # local app 
+    path('', include('bookmark.urls', namespace='bookmark')),
 ]

@@ -20,18 +20,19 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    # third party apps                                                                                                                                                                                                
+    'widget_tweaks',
+    'crispy_forms',
+    
+    # local 
+    'bookmark',
+    # django apps 
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    
-    # app 
-    'bookmark',
-    
-    # third party packages                                                                                                                                                                                                
-    'widget_tweaks',
 ]
 
 MIDDLEWARE = [
@@ -112,7 +113,21 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
+''' django default path for static files '''
 STATIC_URL = '/static/'
+
+''' which defines the location of static files in local development '''
+STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static'),]
+
+''' STATIC_ROOT 121 is the location of static files for production so it must be set to a different name, typically staticfiles . '''
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+
+''' STATICFILES_FINDERS 123 which tells Django how to look for static file directories. '''
+
+STATICFILES_FINDERS = [
+    "django.contrib.staticfiles.finders.FileSystemFinder",
+    'django.contrib.staticfiles.finders.AppDirectoriesFinder'
+]
 
 ''' use CustomUser instead of the default User model. '''
 AUTH_USER_MODEL = 'bookmark.CustomUser'
@@ -125,3 +140,8 @@ LOGOUT_REDIRECT_URL = 'bookmark:home'
 
 ''' signup redirect '''
 SIGNUP_REDIRECT_URL = 'bookmark:home'
+
+''' The EMAIL_BACKEND setting indicates the class to use to send emails '''
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
