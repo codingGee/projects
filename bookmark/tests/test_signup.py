@@ -26,14 +26,18 @@ from bookmark.views import SignupPageView
     
 class SignupPageTests(TestCase):
     
+    ''' test for all auth in check configuration '''
+    username = 'newuser'
+    email = 'newuser@email.com'
+    
     ''' define the setUp fn'''
     def setUp(self):
-        url = reverse('bookmark:signup')
+        url = reverse('account_signup')
         self.response = self.client.get(url)
         
     def test_signup_template(self):
         self.assertEqual(self.response.status_code, 200)
-        self.assertTemplateUsed(self.response, 'registration/signup.html')
+        self.assertTemplateUsed(self.response, 'account/signup.html')
         self.assertContains(self.response, 'Sign Up')
         self.assertNotContains(self.response, 'Hi there! You should not be here, Coding gee has yout location')
         
@@ -42,9 +46,15 @@ class SignupPageTests(TestCase):
         ''' get the context from the form, check if the form was well created using the CUstomerUserCreationForm
             and also if csrf middleware is running which is very important 
         '''
-        form = self.response.context.get('form')
-        self.assertIsInstance(form, CustomUserCreationForm)
-        self.assertContains(self.response, 'csrfmiddlewaretoken')
+        # form = self.response.context.get('form')
+        # self.assertIsInstance(form, CustomUserCreationForm)
+        # self.assertContains(self.response, 'csrfmiddlewaretoken')
+        
+        ''' allauth form testing  '''
+        new_user = get_user_model().objects.create_user(self.username, self.email)
+        self.assertEqual(get_user_model().objects.all().count(), 1)
+        self.assertEqual(get_user_model().objects.all()[0].username, self.username)
+        self.assertEqual(get_user_model().objects.all()[0].email, self.email)
         
     ''' define the signup view for the test case '''
     def test_signup_view(self):

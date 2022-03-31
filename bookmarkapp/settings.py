@@ -149,6 +149,11 @@ SIGNUP_REDIRECT_URL = 'bookmark:home'
 ''' ask for password once '''
 ACCOUNT_SIGNUP_PASSWORD_ENTER_TWICE = False
 
+''' Email login alone configuration '''
+ACCOUNT_USERNAME_REQUIRED = False
+ACCOUNT_AUTHENTICATION_METHOD = 'email'
+ACCOUNT_EMAIL_REQUIRED = True # 
+ACCOUNT_UNIQUE_EMAIL = True
 
 ''' django custom form decoration '''
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
