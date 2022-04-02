@@ -166,7 +166,7 @@ AUTHENTICATION_BACKENDS = (
 'django.contrib.auth.backends.ModelBackend',
 'allauth.account.auth_backends.AuthenticationBackend',
 )
-''' The EMAIL_BACKEND setting indicates the class to use to send emails '''
-EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
-'''django-allauth is to only ask for a password once. '''
+DEFAULT_FROM_EMAIL = 'admin@codinggee.com'
+''' The EMAIL_BACKEND setting indicates the class to use to send emails '''
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
