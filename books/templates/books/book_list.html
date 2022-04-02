@@ -1,0 +1,15 @@
+{% extends 'base/base.html' %}
+{% block title %}Books{% endblock title %}
+{% block content %}
+
+{% include "nav/nav.html" %}
+
+<!-- write a for loop, looping through each book titles -->
+{% for book in book_list %}
+<div>
+    <div class="container">
+        <h2 class="mx-3"><a class="text-decoration-none" href="{{ book.get_absolute_url }}">{{ book.title }}</a></h2>
+    </div>
+</div>
+{% endfor %}
+{% endblock content %}

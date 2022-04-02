@@ -26,4 +26,6 @@ urlpatterns = [
     
         # local app 
     path('', include('bookmark.urls', namespace='bookmark')),
+    path('books/', include('books.urls', namespace='books')),
+    
 ]

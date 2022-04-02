@@ -30,15 +30,17 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'django.contrib.sites',
     
-     # local 
-    'bookmark',
-    
      # third party apps                                                                                                                                                                                                
     'widget_tweaks',
     'crispy_forms',
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
+    
+      # local 
+    'bookmark.apps.BookmarkConfig',
+    'books',
+    
 ]
 
 MIDDLEWARE = [
