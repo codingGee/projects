@@ -40,6 +40,7 @@ INSTALLED_APPS = [
       # local 
     'bookmark.apps.BookmarkConfig',
     'books',
+    'orders.apps.OrdersConfig',
     
 ]
 
@@ -175,3 +176,6 @@ AUTHENTICATION_BACKENDS = (
 DEFAULT_FROM_EMAIL = 'admin@codinggee.com'
 ''' The EMAIL_BACKEND setting indicates the class to use to send emails '''
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+
+STRIPE_TEST_PUBLISHABLE_KEY=config('STRIPE_TEST_PUBLISHABLE_KEY')
+STRIPE_TEST_SECRET_KEY=config('STRIPE_TEST_SECRET_KEY')

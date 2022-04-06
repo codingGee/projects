@@ -3,6 +3,11 @@
 {% block content %}
 
 {% include "nav/nav.html" %}
+{% if not perms.books.special_status %}
+<div class="container mt-4 mx-md-4 mb-2">
+    <a href="{% url 'orders:orders' %}" class="btn btn-success" >Purchase All Books</a>
+</div>
+{% endif %}
 
 <!-- write a for loop, looping through each book titles -->
 {% for book in book_list %}

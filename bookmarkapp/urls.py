@@ -14,5 +14,6 @@ urlpatterns = [
         # local app 
     path('', include('bookmark.urls', namespace='bookmark')),
     path('books/', include('books.urls', namespace='books')),
+    path('orders/', include('orders.urls', namespace='orders')),
     
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
