@@ -36,8 +36,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'django.contrib.sites',
     
-     # third party apps                                                                                                                                                                                                
-    'widget_tweaks',
+     # third party apps                                                                                                                                                                                         
     'crispy_forms',
     'allauth',
     'allauth.account',
