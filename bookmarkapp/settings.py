@@ -181,8 +181,8 @@ CRISPY_TEMPLATE_PACK = 'bootstrap4'
 ''' django-allauth config '''
 SITE_ID = 1
 AUTHENTICATION_BACKENDS = (
-'django.contrib.auth.backends.ModelBackend',
-'allauth.account.auth_backends.AuthenticationBackend',
+    'django.contrib.auth.backends.ModelBackend',
+    'allauth.account.auth_backends.AuthenticationBackend',
 )
 
 DEFAULT_FROM_EMAIL = 'admin@codinggee.com'
@@ -209,7 +209,7 @@ SECURE_HSTS_SECONDS = 3600 # new
 SECURE_HSTS_INCLUDE_SUBDOMAINS = True # new
 SECURE_HSTS_PRELOAD = True # new
 SECURE_CONTENT_TYPE_NOSNIFF = True # new
-SECURE_REFERRER_POLICY = 'no-referrer-when-downgrade'
+SECURE_REFERRER_POLICY = 'no-referrer'
 
 ''' Heroku '''
 import dj_database_url
