@@ -32,6 +32,7 @@ INSTALLED_APPS = [
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
+    'whitenoise.runserver_nostatic',
     'django.contrib.staticfiles',
     'django.contrib.sites',
     
@@ -42,10 +43,11 @@ INSTALLED_APPS = [
     'allauth.account',
     'allauth.socialaccount',
     'debug_toolbar',
+    'admin_honeypot',
     
       # local 
     'bookmark.apps.BookmarkConfig',
-    'books',
+    'books.apps.BooksConfig',
     'orders.apps.OrdersConfig',
     
 ]
@@ -53,6 +55,7 @@ INSTALLED_APPS = [
 MIDDLEWARE = [
     'django.middleware.cache.UpdateCacheMiddleware',
     'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -193,3 +196,25 @@ STRIPE_TEST_SECRET_KEY=config('STRIPE_TEST_SECRET_KEY')
 CACHE_MIDDLEWARE_ALIAS = 'default'
 CACHE_MIDDLEWARE_SECONDS = 604800
 CACHE_MIDDLEWARE_KEY_PREFIX = ''
+
+# ENVIRONMENT = os.environ.get('ENVIRONMENT', default='development')
+''' Security is a major concern for any website '''
+# if ENVIRONMENT == 'development':
+SECURE_BROWSER_XSS_FILTER = True
+X_FRAME_OPTIONS = 'DENY'
+SECURE_SSL_REDIRECT = True
+SESSION_COOKIE_SECURE = True
+CSRF_COOKIE_SECURE = True
+SECURE_HSTS_SECONDS = 3600 # new
+SECURE_HSTS_INCLUDE_SUBDOMAINS = True # new
+SECURE_HSTS_PRELOAD = True # new
+SECURE_CONTENT_TYPE_NOSNIFF = True # new
+SECURE_REFERRER_POLICY = 'no-referrer-when-downgrade'
+
+''' Heroku '''
+import dj_database_url
+db_from_env = dj_database_url.config(conn_max_age=500)
+DATABASES['default'].update(db_from_env)
+
+import django_heroku
+django_heroku.settings(locals())
